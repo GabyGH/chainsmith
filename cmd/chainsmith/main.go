@@ -15,7 +15,7 @@ import (
 
 // Create the root command object with version information
 var rootCmd = &cobra.Command{
-	Use:   "chainsmith",
+	Use:   "chainsmith", // The name of the command itself as it is called
 	Short: "Chainsmith - A simple certificate chain manager",
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("Use --help to see available commands.")
@@ -29,7 +29,11 @@ func init() {
 	if err != nil {
 		panic(fmt.Errorf("init failed: %w", err).Error())
 	}
-	rootCmd.AddCommand(issueCmd, listCmd, revokeCmd)
+	rootCmd.AddCommand(
+		issueCmd,
+		listCmd,
+		revokeCmd,
+	)
 }
 
 // issueCmd generates CA and certificates based on a configuration file read with Viper.
